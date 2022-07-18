@@ -1,13 +1,13 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by Manollo Martinez on 16/07/22.
 //
 
 import SwiftUI
 
-struct FKTextField: View {
+struct FKTextFieldRounded: View {
     
     var imageLeft : String = "trash.fill"
     var colorIcLeft : Color = .black
@@ -37,10 +37,6 @@ struct FKTextField: View {
     
     var body: some View {
         ZStack{
-            Rectangle()
-                .fill(backgroundColor)
-                .frame(width: width*0.915, height: 40)
-                .border(color)
             HStack(spacing: 8){
                 
                 Image(
@@ -76,16 +72,20 @@ struct FKTextField: View {
             }
             .padding(8)
             .frame(width: width * 0.90, height: height)
+            .overlay{
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(color, lineWidth: 1)
+            }
         }
     }
 
 }
 
-struct FKTextField_Previews: PreviewProvider {
+struct FKTextFieldRounded_Preview: PreviewProvider {
     static var previews: some View {
 
         
-        FKTextField(text: .constant(""), callback: {
+        FKTextFieldRounded(text: .constant(""), callback: {
             
         })
     }
