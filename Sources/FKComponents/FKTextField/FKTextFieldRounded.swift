@@ -36,46 +36,43 @@ struct FKTextFieldRounded: View {
     
     
     var body: some View {
-        ZStack{
-            HStack(spacing: 8){
-                
-                Image(
-                    uiImage: ((UIImage(systemName: imageLeft) ?? UIImage(named: imageLeft)) ?? UIImage(named : ""))!
-                )
-                .foregroundColor(colorIcLeft)
-                
-                TextField(placeholder, text: $text)
-                    .font(Font.caption)
-                    .onChange(of: text){ text in
-                        if (text.range(
-                            of: regexValidationField,
-                            options: .regularExpression
-                        ) != nil){
-                            color = .black
-                        }else{
-                            color = .red
-                        }
+        HStack(spacing: 8){
+            Image(
+                uiImage: ((UIImage(systemName: imageLeft) ?? UIImage(named: imageLeft)) ?? UIImage(named : ""))!
+            )
+            .foregroundColor(colorIcLeft)
+            
+            TextField(placeholder, text: $text)
+                .font(Font.caption)
+                .onChange(of: text){ text in
+                    if (text.range(
+                        of: regexValidationField,
+                        options: .regularExpression
+                    ) != nil){
+                        color = .black
+                    }else{
+                        color = .red
                     }
-                    
-                    
-                if(!icRightPg){
-                    Image(
-                        uiImage: ((UIImage(systemName: imageRight) ?? UIImage(named: imageRight)) ?? UIImage(named : ""))!
-                    )
-                        .foregroundColor(colorIcRight)
-                        .onTapGesture {
-                            callback()
-                        }
-                }else{
-                    ProgressView()
                 }
+                
+                
+            if(!icRightPg){
+                Image(
+                    uiImage: ((UIImage(systemName: imageRight) ?? UIImage(named: imageRight)) ?? UIImage(named : ""))!
+                )
+                    .foregroundColor(colorIcRight)
+                    .onTapGesture {
+                        callback()
+                    }
+            }else{
+                ProgressView()
             }
-            .padding(8)
-            .frame(width: width * 0.90, height: height)
-            .overlay{
-                RoundedRectangle(cornerRadius: 14)
-                    .stroke(color, lineWidth: 1)
-            }
+        }
+        .padding(8)
+        .frame(width: width * 0.90, height: height)
+        .overlay{
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(color, lineWidth: 1)
         }
     }
 
