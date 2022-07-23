@@ -27,9 +27,11 @@ struct FKTextFieldRounded: View {
     init(
         text : Binding<String>,
         icRightPg : Binding<Bool> = .constant(false),
+        placeholder : String = "Placeholder",
         callback : @escaping () -> Void
     ){
         self._text = text
+        self.placeholder = placeholder
         self._icRightPg = icRightPg
         self.callback = callback
     }

@@ -13,7 +13,7 @@ struct FKSecureTextField: View {
     var colorIcLeft : Color
     var width : CGFloat = UIScreen.main.bounds.width
     var height : CGFloat = 40.0
-    var placeholder : String = "Placeholder"
+    var placeholder : String
     var backgroundColor : Color = .white
     var regexValidationField : String = ""
     
@@ -25,10 +25,12 @@ struct FKSecureTextField: View {
     init(
         icLeft : String = "",
         colorIcLeft : Color = .clear,
+        placeholder : String = "Placeholder",
         text : Binding<String>
     ){
         self.icLeft = icLeft
         self.colorIcLeft = colorIcLeft
+        self.placeholder = placeholder
         self._text = text
     }
     
@@ -40,7 +42,6 @@ struct FKSecureTextField: View {
                 .frame(width: width*0.915, height: 40)
                 .border(color)
             HStack(spacing: 8){
-                
                 Image(
                     uiImage: ((UIImage(systemName: icLeft) ?? UIImage(named: icLeft)) ?? UIImage(named : ""))!
                 )
@@ -81,9 +82,10 @@ struct FKSecureTextField: View {
 }
 
 struct FKSecureTextField_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-
-        
+     
         FKSecureTextField(icLeft: "trash.fill", colorIcLeft: .black, text: .constant(""))
         
     }

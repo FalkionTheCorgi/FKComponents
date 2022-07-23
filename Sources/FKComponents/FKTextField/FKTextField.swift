@@ -15,7 +15,7 @@ struct FKTextField: View {
     var colorIcRight : Color = .black
     var width : CGFloat = UIScreen.main.bounds.width
     var height : CGFloat = 40.0
-    var placeholder : String = "Placeholder"
+    var placeholder : String
     var backgroundColor : Color = .white
     var callback: () -> Void?
     var regexValidationField : String = ""
@@ -27,10 +27,12 @@ struct FKTextField: View {
     init(
         text : Binding<String>,
         icRightPg : Binding<Bool> = .constant(false),
+        placeholder : String = "Placeholder",
         callback : @escaping () -> Void
     ){
         self._text = text
         self._icRightPg = icRightPg
+        self.placeholder = placeholder
         self.callback = callback
     }
     
